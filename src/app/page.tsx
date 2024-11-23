@@ -2,24 +2,33 @@ import Image from "next/image";
 import Banner from "../../public/banner.jpg";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+
 import { ArrowRight } from "lucide-react";
+import { LitupBorderButton } from "@/components/ui/LitupBorderButton";
 
 export default function Home() {
   return (
     <main className="mx-auto max-w-7xl space-y-10 px-5 py-10">
       <div className="flex items-center bg-secondary md:h-96">
-        <div className="space-y-7 p-10 text-center md:w-1/2">
+        {/* text & button */}
+        <div className="flex flex-col items-center justify-center space-y-7 p-10 text-center md:w-1/2">
           <h1>Fill the Gap of your heart</h1>
           <p>
             Feeling alone? Wallet light? Treat yourself to something extravagant
             and turn it all around!
           </p>
-          <Button asChild>
-            <Link href={"/shop"}>
-              Shop now! <ArrowRight className="ml-2 size-5" />
+          <LitupBorderButton>
+            <Link
+              href={"/shop"}
+              className="flex items-center justify-center gap-2"
+            >
+              <p>Shop now!</p>
+              <ArrowRight className="size-5" />
             </Link>
-          </Button>
+          </LitupBorderButton>
         </div>
+
+        {/* image on the right */}
         <div className="hidden h-full w-1/2 overflow-hidden md:block">
           <Image
             src={Banner}

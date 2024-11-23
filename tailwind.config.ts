@@ -10,6 +10,35 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        black: {
+          DEFAULT: "#000",
+          100: "#000319",
+          200: "rgba(17, 25, 40, 0.75)",
+          300: "rgba(255, 255, 255, 0.125)",
+        },
+        white: {
+          DEFAULT: "#FFF",
+          100: "#BEC1DD",
+          200: "#C1C2D3",
+        },
+        blue: {
+          "100": "#E4ECFF",
+          "500": "#3B82F6",
+          "600": "#2563EB",
+        },
+        orange: {
+          "50": "#FFF7ED",
+          "100": "#FFEDD5",
+          "200": "#FED7AA",
+          "300": "#FDBA74",
+          "400": "#FB923C",
+          "500": "#F97316",
+          "600": "#EA580C",
+          "700": "#C2410C",
+          "800": "#9A3412",
+          "900": "#7C2D12",
+        },
+        purple: "#CBACF9",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -77,10 +106,19 @@ const config: Config = {
             height: "0",
           },
         },
+        shimmer: {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        shimmer: "shimmer 2s linear infinite",
       },
     },
   },
