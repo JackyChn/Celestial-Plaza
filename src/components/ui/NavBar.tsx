@@ -2,7 +2,6 @@ import { getWixClient } from "@/lib/wix-client.base";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import Logo from "../../public/logo.png";
 
 export default async function NavBar() {
   const mainCart = await getCart();
@@ -12,11 +11,14 @@ export default async function NavBar() {
     0;
   return (
     <header className="bg-background shadow-sm">
-      <div className="mx-auto max-w-7xl p-5">
-        <Link href={"/"} className="flex items-center gap-4">
-          <Image src={Logo} alt="Logo" width={40} height={40} />
+      <div className="mx-auto flex max-w-7xl justify-between p-5">
+        <Link href={"/"} className="flex items-center justify-center gap-4">
+          <Image src={"/logo.png"} alt="Logo" width={40} height={40} />
           <span className="text-xl font-bold">Flow Shop</span>
         </Link>
+        <p className="flex items-center justify-center">
+          {totalQuantity} added in your cart!
+        </p>
       </div>
     </header>
   );

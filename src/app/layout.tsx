@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import { Lora } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
-import NavBar from "@/components/NavBar";
+import NavBar from "@/components/ui/NavBar";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
+import Footer from "@/components/ui/Footer";
 
 const lora = Lora({ subsets: ["latin"] });
 
@@ -32,6 +33,7 @@ export default function RootLayout({
           <ReactQueryProvider>
             <NavBar />
             <div className="min-h-[50vh]">{children}</div>
+            <Footer />
           </ReactQueryProvider>
         </ThemeProvider>
       </body>
