@@ -7,9 +7,7 @@ import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import { TextRevealCard } from "@/components/ui/TextRevealCard";
 import { delay } from "@/lib/utils";
 import { Suspense } from "react";
-import Spinner from "@/components/ui/Spinner";
 import { getWixClient } from "@/lib/wix-client.base";
-import { collections, products } from "@wix/stores";
 import Product from "@/components/Product";
 import { Skeleton } from "@/components/ui/skeleton";
 

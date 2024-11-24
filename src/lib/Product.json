@@ -1,604 +1,370 @@
 {
-  "id": "d17bb5c4-e10f-4b83-ae97-f27f2edc18f1",
-  "revision": "2",
-  "createdDate": "2024-07-22T13:22:47.771Z",
-  "updatedDate": "2024-07-22T13:51:49.970Z",
-  "name": "Premium Coffee",
-  "slug": "coffee",
-  "url": {
-    "relativePath": "/product-page/coffee",
-    "url": "https://my.wixsite.com/food-store/product-page/coffee"
-  },
-  "description": {
-    "nodes": [
+  "product": {
+    "id": "91f7ac8b-2baa-289c-aa50-6d64764f35d3",
+    "name": "Colombian Arabica",
+    "slug": "colombian-arabica-1",
+    "visible": true,
+    "productType": "physical",
+    "description": "<p>The best organic coffee that Colombia has to offer.</p>",
+    "stock": {
+      "trackInventory": false,
+      "inStock": true,
+      "inventoryStatus": "IN_STOCK"
+    },
+    "weightRange": {
+      "minValue": 0.25,
+      "maxValue": 1
+    },
+    "price": {
+      "currency": "USD",
+      "price": 35,
+      "discountedPrice": 30,
+      "formatted": {
+        "price": "$35.00",
+        "discountedPrice": "$30.00",
+        "pricePerUnit": "$0.12"
+      },
+      "pricePerUnit": 0.12
+    },
+    "priceData": {
+      "currency": "USD",
+      "price": 35,
+      "discountedPrice": 30,
+      "formatted": {
+        "price": "$35.00",
+        "discountedPrice": "$30.00",
+        "pricePerUnit": "$0.12"
+      },
+      "pricePerUnit": 0.12
+    },
+    "convertedPriceData": {
+      "currency": "USD",
+      "price": 35,
+      "discountedPrice": 30,
+      "formatted": {
+        "price": "$35.00",
+        "discountedPrice": "$30.00",
+        "pricePerUnit": "$0.12"
+      },
+      "pricePerUnit": 0.12
+    },
+    "priceRange": {
+      "minValue": 35,
+      "maxValue": 70
+    },
+    "costRange": {
+      "minValue": 20,
+      "maxValue": 40
+    },
+    "pricePerUnitData": {
+      "totalQuantity": 250,
+      "totalMeasurementUnit": "G",
+      "baseQuantity": 1,
+      "baseMeasurementUnit": "G"
+    },
+    "additionalInfoSections": [
       {
-        "type": "PARAGRAPH",
-        "id": "foo",
-        "nodes": [
+        "title": "Storage recommendations",
+        "description": "<p>To&nbsp;preserve&nbsp;your beans' fresh roasted flavor as long as possible, store them in an opaque, air-tight container at room temperature.</p>\n"
+      }
+    ],
+    "ribbons": [
+      {
+        "text": "Organic and Fair trade"
+      }
+    ],
+    "media": {
+      "mainMedia": {
+        "thumbnail": {
+          "url": "https://static.wixstatic.com/media/nsplsh_5033504669385448625573~mv2_d_6000_3376_s_4_2.jpg/v1/fit/w_50,h_50,q_90/file.jpg",
+          "width": 50,
+          "height": 50
+        },
+        "mediaType": "image",
+        "title": "",
+        "image": {
+          "url": "https://static.wixstatic.com/media/nsplsh_5033504669385448625573~mv2_d_6000_3376_s_4_2.jpg/v1/fit/w_6000,h_3376,q_90/file.jpg",
+          "width": 6000,
+          "height": 3376
+        },
+        "id": "nsplsh_5033504669385448625573~mv2_d_6000_3376_s_4_2.jpg"
+      },
+      "items": [
+        {
+          "thumbnail": {
+            "url": "https://static.wixstatic.com/media/nsplsh_5033504669385448625573~mv2_d_6000_3376_s_4_2.jpg/v1/fit/w_50,h_50,q_90/file.jpg",
+            "width": 50,
+            "height": 50
+          },
+          "mediaType": "image",
+          "title": "",
+          "image": {
+            "url": "https://static.wixstatic.com/media/nsplsh_5033504669385448625573~mv2_d_6000_3376_s_4_2.jpg/v1/fit/w_6000,h_3376,q_90/file.jpg",
+            "width": 6000,
+            "height": 3376
+          },
+          "id": "nsplsh_5033504669385448625573~mv2_d_6000_3376_s_4_2.jpg"
+        }
+      ]
+    },
+    "customTextFields": [
+      {
+        "title": "What would you like us to print on the custom label?",
+        "maxLength": 200,
+        "mandatory": false
+      }
+    ],
+    "manageVariants": true,
+    "productOptions": [
+      {
+        "optionType": "drop_down",
+        "name": "Weight",
+        "choices": [
           {
-            "type": "TEXT",
-            "id": "",
-            "nodes": [],
-            "textData": {
-              "text": "Tasty, high quality and eco friendly, in a beautiful gift box.",
-              "decorations": []
-            }
+            "value": "250g",
+            "description": "250g",
+            "media": {
+              "items": []
+            },
+            "inStock": true,
+            "visible": true
+          },
+          {
+            "value": "500g",
+            "description": "500g",
+            "media": {
+              "items": []
+            },
+            "inStock": true,
+            "visible": true
           }
-        ],
-        "paragraphData": {
-          "textStyle": {
-            "textAlignment": "AUTO"
+        ]
+      },
+      {
+        "optionType": "drop_down",
+        "name": "Ground for",
+        "choices": [
+          {
+            "value": "Stovetop",
+            "description": "Stovetop",
+            "media": {
+              "items": []
+            },
+            "inStock": true,
+            "visible": true
+          },
+          {
+            "value": "Filter",
+            "description": "Filter",
+            "inStock": true,
+            "visible": true
           }
+        ]
+      }
+    ],
+    "productPageUrl": {
+      "base": "https://wixsite.com/examplestore",
+      "path": "/product-page/colombian-arabica-1"
+    },
+    "numericId": "1586693639134000",
+    "inventoryItemId": "6e085374-d455-d763-55af-929b89b0ca2c",
+    "discount": {
+      "type": "AMOUNT",
+      "value": 5
+    },
+    "collectionIds": [
+      "32fd0b3a-2d38-2235-7754-78a3f819274a",
+      "00000000-000000-000000-000000000001"
+    ],
+    "variants": [
+      {
+        "id": "00000000-0000-0020-0005-a316e6ba5b37",
+        "choices": {
+          "Weight": "250g",
+          "Ground for": "Stovetop"
+        },
+        "variant": {
+          "priceData": {
+            "currency": "USD",
+            "price": 35,
+            "discountedPrice": 30,
+            "formatted": {
+              "price": "$35.00",
+              "discountedPrice": "$30.00",
+              "pricePerUnit": "$0.12"
+            },
+            "pricePerUnit": 0.12
+          },
+          "convertedPriceData": {
+            "currency": "USD",
+            "price": 35,
+            "discountedPrice": 30,
+            "formatted": {
+              "price": "$35.00",
+              "discountedPrice": "$30.00",
+              "pricePerUnit": "$0.12"
+            },
+            "pricePerUnit": 0.12
+          },
+          "costAndProfitData": {
+            "itemCost": 20,
+            "formattedItemCost": "$20.00",
+            "profit": 10,
+            "formattedProfit": "$10.00",
+            "profitMargin": 0.3333
+          },
+          "weight": 0.25,
+          "sku": "10001",
+          "visible": true
+        }
+      },
+      {
+        "id": "00000000-0000-0021-0005-a316e6ba5b37",
+        "choices": {
+          "Weight": "250g",
+          "Ground for": "Filter"
+        },
+        "variant": {
+          "priceData": {
+            "currency": "USD",
+            "price": 35,
+            "discountedPrice": 30,
+            "formatted": {
+              "price": "$35.00",
+              "discountedPrice": "$30.00",
+              "pricePerUnit": "$0.12"
+            },
+            "pricePerUnit": 0.12
+          },
+          "convertedPriceData": {
+            "currency": "USD",
+            "price": 35,
+            "discountedPrice": 30,
+            "formatted": {
+              "price": "$35.00",
+              "discountedPrice": "$30.00",
+              "pricePerUnit": "$0.12"
+            },
+            "pricePerUnit": 0.12
+          },
+          "costAndProfitData": {
+            "itemCost": 20,
+            "formattedItemCost": "$20.00",
+            "profit": 10,
+            "formattedProfit": "$10.00",
+            "profitMargin": 0.3333
+          },
+          "weight": 0.25,
+          "sku": "10003",
+          "visible": true
+        }
+      },
+      {
+        "id": "00000000-0000-003f-0005-a316e6ba5b37",
+        "choices": {
+          "Weight": "500g",
+          "Ground for": "Stovetop"
+        },
+        "variant": {
+          "priceData": {
+            "currency": "USD",
+            "price": 65,
+            "discountedPrice": 60,
+            "formatted": {
+              "price": "$65.00",
+              "discountedPrice": "$60.00",
+              "pricePerUnit": "$0.24"
+            },
+            "pricePerUnit": 0.24
+          },
+          "convertedPriceData": {
+            "currency": "USD",
+            "price": 65,
+            "discountedPrice": 60,
+            "formatted": {
+              "price": "$65.00",
+              "discountedPrice": "$60.00",
+              "pricePerUnit": "$0.24"
+            },
+            "pricePerUnit": 0.24
+          },
+          "costAndProfitData": {
+            "itemCost": 40,
+            "formattedItemCost": "$40.00",
+            "profit": 20,
+            "formattedProfit": "$20.00",
+            "profitMargin": 0.3333
+          },
+          "weight": 0.5,
+          "sku": "10002",
+          "visible": true
+        }
+      },
+      {
+        "id": "00000000-0000-0040-0005-a316e6ba5b37",
+        "choices": {
+          "Weight": "500g",
+          "Ground for": "Filter"
+        },
+        "variant": {
+          "priceData": {
+            "currency": "USD",
+            "price": 70,
+            "discountedPrice": 65,
+            "formatted": {
+              "price": "$70.00",
+              "discountedPrice": "$65.00",
+              "pricePerUnit": "$0.26"
+            },
+            "pricePerUnit": 0.26
+          },
+          "convertedPriceData": {
+            "currency": "USD",
+            "price": 70,
+            "discountedPrice": 65,
+            "formatted": {
+              "price": "$70.00",
+              "discountedPrice": "$65.00",
+              "pricePerUnit": "$0.26"
+            },
+            "pricePerUnit": 0.26
+          },
+          "costAndProfitData": {
+            "itemCost": 40,
+            "formattedItemCost": "$40.00",
+            "profit": 25,
+            "formattedProfit": "$25.00",
+            "profitMargin": 0.3846
+          },
+          "weight": 1,
+          "sku": "10004",
+          "visible": true
         }
       }
     ],
-    "metadata": {
-      "version": 1,
-      "id": "fb97b2c1-a3ff-4319-be5f-bbb7fdf0776c"
-    }
-  },
-  "plainDescription": "<p>Tasty, high quality and eco friendly, in a beautiful gift box.</p>",
-  "visible": false,
-  "visibleInPos": false,
-  "media": {
-    "main": {
-      "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-      "image": {
-        "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-        "url": "https://static.wixstatic.com/media/370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-        "height": 1200,
-        "width": 1200,
-        "filename": "food.jpeg",
-        "sizeInBytes": "116752"
-      },
-      "uploadId": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg"
-    },
-    "itemsInfo": {
-      "items": [
+    "lastUpdated": "2022-07-12T10:02:26.664Z",
+    "createdDate": "2020-04-12T12:13:59.134Z",
+    "seoData": {
+      "tags": [
         {
-          "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-          "image": {
-            "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-            "url": "https://static.wixstatic.com/media/370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-            "height": 1200,
-            "width": 1200,
-            "filename": "food.jpeg",
-            "sizeInBytes": "116752"
-          },
-          "uploadId": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg"
+          "type": "title",
+          "children": "Colombian Arabica | Organic and Fair Trade",
+          "custom": false,
+          "disabled": false
         },
         {
-          "id": "370e1a_8412ab11b3ad48bb8375a2ecb1cc8b4d~mv2.jpeg",
-          "image": {
-            "id": "370e1a_8412ab11b3ad48bb8375a2ecb1cc8b4d~mv2.jpeg",
-            "url": "https://static.wixstatic.com/media/370e1a_8412ab11b3ad48bb8375a2ecb1cc8b4d~mv2.jpeg",
-            "height": 1200,
-            "width": 1200,
-            "filename": "food.jpeg",
-            "sizeInBytes": "116752"
+          "type": "meta",
+          "props": {
+            "name": "description",
+            "content": "The best organic fair trade coffee that Colombia has to offer."
           },
-          "uploadId": "44682905-395a-4c18-8fab-e050725ba3f6"
+          "children": "",
+          "custom": false,
+          "disabled": false
         }
       ]
-    }
-  },
-  "options": [
-    {
-      "id": "85bb0544-63c7-431b-9659-f81b18a7dd9f",
-      "name": "Size",
-      "optionRenderType": "TEXT_CHOICES",
-      "choicesSettings": {
-        "choices": [
-          {
-            "choiceId": "4498b805-2aed-43fb-b478-989c906c19cd",
-            "linkedMedia": [],
-            "choiceType": "CHOICE_TEXT",
-            "key": "S",
-            "name": "S",
-            "inStock": true
-          },
-          {
-            "choiceId": "26394ab0-d81a-422f-a8c9-562f49a6b595",
-            "linkedMedia": [],
-            "choiceType": "CHOICE_TEXT",
-            "key": "L",
-            "name": "L",
-            "inStock": false
-          }
-        ]
-      },
-      "key": "Size"
     },
-    {
-      "id": "1938d364-126d-4304-b706-9e9e9f6d376f",
-      "name": "Box color",
-      "optionRenderType": "SWATCH_CHOICES",
-      "choicesSettings": {
-        "choices": [
-          {
-            "choiceId": "2e98f13b-ae65-4d30-96c5-ac3a6cf99d60",
-            "linkedMedia": [],
-            "choiceType": "ONE_COLOR",
-            "key": "red",
-            "name": "red",
-            "colorCode": "#FF0000",
-            "inStock": true
-          },
-          {
-            "choiceId": "4876dcc7-817e-4c10-a6b2-4a4cc2e241e6",
-            "linkedMedia": [],
-            "choiceType": "ONE_COLOR",
-            "key": "blue",
-            "name": "blue",
-            "colorCode": "#0000FF",
-            "inStock": false
-          }
-        ]
-      },
-      "key": "Box color"
-    }
-  ],
-  "modifiers": [
-    {
-      "id": "a3d249f0-a8da-425d-9ec1-3c51c795d927",
-      "name": "Remove price tag",
-      "modifierRenderType": "TEXT_CHOICES",
-      "mandatory": false,
-      "choicesSettings": {
-        "choices": [
-          {
-            "choiceId": "3050481e-e177-4031-bbe9-be9b00af14b5",
-            "linkedMedia": [],
-            "choiceType": "CHOICE_TEXT",
-            "key": "yes",
-            "name": "yes"
-          },
-          {
-            "choiceId": "ee729b74-d500-4594-aae5-b5a2e75bf5e7",
-            "linkedMedia": [],
-            "choiceType": "CHOICE_TEXT",
-            "key": "no",
-            "name": "no"
-          }
-        ]
-      },
-      "key": "Remove price tag"
-    }
-  ],
-  "brand": {
-    "id": "4a16d28d-1736-41f0-87d8-995f6d9a5bdd",
-    "name": "EcoCoffee"
-  },
-  "infoSections": [
-    {
-      "id": "59954f23-fbcd-42e5-ba61-7c8cf9d8b409",
-      "uniqueName": "Coffee refund",
-      "title": "Refund policy",
-      "description": {
-        "nodes": [
-          {
-            "type": "PARAGRAPH",
-            "id": "xjkk51429",
-            "nodes": [
-              {
-                "type": "TEXT",
-                "id": "",
-                "nodes": [],
-                "textData": {
-                  "text": "2 weeks full refund unless you asked for engraving ",
-                  "decorations": []
-                }
-              }
-            ],
-            "paragraphData": {}
-          }
-        ],
-        "metadata": {
-          "version": 1
-        },
-        "documentStyle": {}
-      },
-      "plainDescription": "<p>2 weeks full refund unless you asked for engraving </p>"
-    },
-    {
-      "id": "b9b39003-0edd-41c0-9403-a0fe19cc5bb4",
-      "uniqueName": "Origin",
-      "title": "Made in",
-      "description": {
-        "nodes": [
-          {
-            "type": "PARAGRAPH",
-            "id": "xjkk51429",
-            "nodes": [
-              {
-                "type": "TEXT",
-                "id": "",
-                "nodes": [],
-                "textData": {
-                  "text": "Brazil",
-                  "decorations": []
-                }
-              }
-            ]
-          }
-        ]
-      },
-      "plainDescription": "<p>Brazil</p>"
-    }
-  ],
-  "ribbon": {
-    "id": "14585597-3302-4145-8da3-24a26d8346d6",
-    "name": "New arrival"
-  },
-  "directCategoriesInfo": {
-    "categories": [
-      {
-        "id": "643721c3-446e-47f3-87ee-0a58d6842d48"
-      }
-    ]
-  },
-  "allCategoriesInfo": {
-    "categories": [
-      {
-        "id": "643721c3-446e-47f3-87ee-0a58d6842d48"
-      }
-    ]
-  },
-  "mainCategoryId": "643721c3-446e-47f3-87ee-0a58d6842d48",
-  "basePriceRange": {
-    "minValue": {
-      "amount": "10",
-      "formattedAmount": "$10.00"
-    },
-    "maxValue": {
-      "amount": "15",
-      "formattedAmount": "$15.00"
-    }
-  },
-  "salePriceRange": {
-    "minValue": {
-      "amount": "9",
-      "formattedAmount": "$9.00"
-    },
-    "maxValue": {
-      "amount": "15",
-      "formattedAmount": "$15.00"
-    }
-  },
-  "costRange": {
-    "minValue": {
-      "amount": "0.0",
-      "formattedAmount": "$0.00"
-    },
-    "maxValue": {
-      "amount": "10",
-      "formattedAmount": "$10.00"
-    }
-  },
-  "inventory": {
-    "availabilityStatus": "OUT_OF_STOCK",
-    "preorderStatus": "DISABLED"
-  },
-  "productType": "PHYSICAL",
-  "physicalProperties": {
-    "pricePerUnit": {
-      "quantity": 1.0,
-      "measurementUnit": "KG"
-    },
-    "shippingWeightRange": {
-      "minValue": 0.2,
-      "maxValue": 0.4
-    },
-    "weightMeasurementUnitInfo": {
-      "weightMeasurementUnit": "KG"
-    }
-  },
-  "currency": "USD",
-  "breadcrumbsInfo": {
-    "breadcrumbs": [
-      {
-        "categoryId": "643721c3-446e-47f3-87ee-0a58d6842d48",
-        "categoryName": "All Products",
-        "categorySlug": "all-products"
-      }
-    ]
-  },
-  "variantsInfo": {
-    "variants": [
-      {
-        "id": "0a186a72-d289-446a-aa51-adf125d30dc6",
-        "visible": true,
-        "sku": "c-s-r-1111",
-        "barcode": "111111111",
-        "choices": [
-          {
-            "optionChoiceIds": {
-              "optionId": "85bb0544-63c7-431b-9659-f81b18a7dd9f",
-              "choiceId": "4498b805-2aed-43fb-b478-989c906c19cd"
-            },
-            "optionChoiceNames": {
-              "optionName": "Size",
-              "choiceName": "S",
-              "renderType": "TEXT_CHOICES"
-            }
-          },
-          {
-            "optionChoiceIds": {
-              "optionId": "1938d364-126d-4304-b706-9e9e9f6d376f",
-              "choiceId": "2e98f13b-ae65-4d30-96c5-ac3a6cf99d60"
-            },
-            "optionChoiceNames": {
-              "optionName": "Box color",
-              "choiceName": "red",
-              "renderType": "SWATCH_CHOICES"
-            }
-          }
-        ],
-        "price": {
-          "basePrice": {
-            "amount": "10",
-            "formattedAmount": "$10.00"
-          },
-          "salePrice": {
-            "amount": "9",
-            "formattedAmount": "$9.00"
-          }
-        },
-        "revenueDetails": {
-          "cost": {
-            "amount": "8",
-            "formattedAmount": "$8.00"
-          },
-          "profit": {
-            "amount": "1",
-            "formattedAmount": "$1.00"
-          },
-          "profitMargin": 0.1111
-        },
-        "media": {
-          "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-          "image": {
-            "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-            "url": "https://static.wixstatic.com/media/370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-            "height": 1200,
-            "width": 1200,
-            "filename": "food.jpeg",
-            "sizeInBytes": "116752"
-          },
-          "uploadId": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg"
-        },
-        "physicalProperties": {
-          "weight": 0.2,
-          "pricePerUnit": {
-            "settings": {
-              "quantity": 150.0,
-              "measurementUnit": "G"
-            },
-            "value": "60.00",
-            "description": "$60.00/1 kg"
-          }
-        },
-        "subscriptionPricesInfo": {
-          "subscriptionPrices": []
-        }
-      },
-      {
-        "id": "5aace0e6-4bab-4d0e-a595-1bcaa01d2377",
-        "visible": true,
-        "barcode": "111111112",
-        "choices": [
-          {
-            "optionChoiceIds": {
-              "optionId": "85bb0544-63c7-431b-9659-f81b18a7dd9f",
-              "choiceId": "4498b805-2aed-43fb-b478-989c906c19cd"
-            },
-            "optionChoiceNames": {
-              "optionName": "Size",
-              "choiceName": "S",
-              "renderType": "TEXT_CHOICES"
-            }
-          },
-          {
-            "optionChoiceIds": {
-              "optionId": "1938d364-126d-4304-b706-9e9e9f6d376f",
-              "choiceId": "4876dcc7-817e-4c10-a6b2-4a4cc2e241e6"
-            },
-            "optionChoiceNames": {
-              "optionName": "Box color",
-              "choiceName": "blue",
-              "renderType": "SWATCH_CHOICES"
-            }
-          }
-        ],
-        "price": {
-          "basePrice": {
-            "amount": "10",
-            "formattedAmount": "$10.00"
-          },
-          "salePrice": {
-            "amount": "9.5",
-            "formattedAmount": "$9.50"
-          }
-        },
-        "revenueDetails": {
-          "cost": {
-            "amount": "8",
-            "formattedAmount": "$8.00"
-          },
-          "profit": {
-            "amount": "1.5",
-            "formattedAmount": "$1.50"
-          },
-          "profitMargin": 0.1579
-        },
-        "media": {
-          "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-          "image": {
-            "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-            "url": "https://static.wixstatic.com/media/370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-            "height": 1200,
-            "width": 1200,
-            "filename": "food.jpeg",
-            "sizeInBytes": "116752"
-          },
-          "uploadId": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg"
-        },
-        "physicalProperties": {
-          "weight": 0.2,
-          "pricePerUnit": {
-            "settings": {
-              "quantity": 150.0,
-              "measurementUnit": "G"
-            },
-            "value": "63.33",
-            "description": "$63.33/1 kg"
-          }
-        },
-        "subscriptionPricesInfo": {
-          "subscriptionPrices": []
-        }
-      },
-      {
-        "id": "1d2acec3-5294-4521-a648-6f2ed5f58c43",
-        "visible": false,
-        "barcode": "111111113",
-        "choices": [
-          {
-            "optionChoiceIds": {
-              "optionId": "85bb0544-63c7-431b-9659-f81b18a7dd9f",
-              "choiceId": "26394ab0-d81a-422f-a8c9-562f49a6b595"
-            },
-            "optionChoiceNames": {
-              "optionName": "Size",
-              "choiceName": "L",
-              "renderType": "TEXT_CHOICES"
-            }
-          },
-          {
-            "optionChoiceIds": {
-              "optionId": "1938d364-126d-4304-b706-9e9e9f6d376f",
-              "choiceId": "2e98f13b-ae65-4d30-96c5-ac3a6cf99d60"
-            },
-            "optionChoiceNames": {
-              "optionName": "Box color",
-              "choiceName": "red",
-              "renderType": "SWATCH_CHOICES"
-            }
-          }
-        ],
-        "price": {
-          "basePrice": {
-            "amount": "15",
-            "formattedAmount": "$15.00"
-          },
-          "salePrice": {
-            "amount": "14",
-            "formattedAmount": "$14.00"
-          }
-        },
-        "revenueDetails": {
-          "cost": {
-            "amount": "10",
-            "formattedAmount": "$10.00"
-          },
-          "profit": {
-            "amount": "4",
-            "formattedAmount": "$4.00"
-          },
-          "profitMargin": 0.2857
-        },
-        "media": {
-          "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-          "image": {
-            "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-            "url": "https://static.wixstatic.com/media/370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-            "height": 1200,
-            "width": 1200,
-            "filename": "food.jpeg",
-            "sizeInBytes": "116752"
-          },
-          "uploadId": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg"
-        },
-        "physicalProperties": {
-          "weight": 0.4,
-          "pricePerUnit": {
-            "settings": {
-              "quantity": 300.0,
-              "measurementUnit": "G"
-            },
-            "value": "46.67",
-            "description": "$46.67/1 kg"
-          }
-        },
-        "subscriptionPricesInfo": {
-          "subscriptionPrices": []
-        }
-      },
-      {
-        "id": "5c390d11-8d35-48e3-8037-428812e0426c",
-        "visible": true,
-        "barcode": "111111114",
-        "choices": [
-          {
-            "optionChoiceIds": {
-              "optionId": "85bb0544-63c7-431b-9659-f81b18a7dd9f",
-              "choiceId": "26394ab0-d81a-422f-a8c9-562f49a6b595"
-            },
-            "optionChoiceNames": {
-              "optionName": "Size",
-              "choiceName": "L",
-              "renderType": "TEXT_CHOICES"
-            }
-          },
-          {
-            "optionChoiceIds": {
-              "optionId": "1938d364-126d-4304-b706-9e9e9f6d376f",
-              "choiceId": "4876dcc7-817e-4c10-a6b2-4a4cc2e241e6"
-            },
-            "optionChoiceNames": {
-              "optionName": "Box color",
-              "choiceName": "blue",
-              "renderType": "SWATCH_CHOICES"
-            }
-          }
-        ],
-        "price": {
-          "basePrice": {
-            "amount": "15",
-            "formattedAmount": "$15.00"
-          },
-          "salePrice": {
-            "amount": "15",
-            "formattedAmount": "$15.00"
-          }
-        },
-        "media": {
-          "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-          "image": {
-            "id": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-            "url": "https://static.wixstatic.com/media/370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg",
-            "height": 1200,
-            "width": 1200,
-            "filename": "food.jpeg",
-            "sizeInBytes": "116752"
-          },
-          "uploadId": "370e1a_c65292a0c0584c26aa32d9d921302af9~mv2.jpeg"
-        },
-        "physicalProperties": {
-          "weight": 0.4,
-          "pricePerUnit": {
-            "settings": {
-              "quantity": 300.0,
-              "measurementUnit": "G"
-            },
-            "value": "50.00",
-            "description": "$50.00/1 kg"
-          }
-        },
-        "subscriptionPricesInfo": {
-          "subscriptionPrices": []
-        }
-      }
-    ]
+    "ribbon": "Organic and Fair trade",
+    "brand": "Coffee Company"
   }
 }

@@ -1,0 +1,185 @@
+{
+  "cart": {
+    "id": "b7b79cdb-5ff5-4ce8-8b64-0e28b1ea7a95",
+    "lineItems": [
+      {
+        "id": "00000000-0000-0000-0000-000000000001",
+        "quantity": 1,
+        "catalogReference": {
+          "catalogItemId": "df19c1f7-07d8-a265-42f8-e8dfa824cc6e",
+          "appId": "215238eb-22a5-4c36-9e7b-e7c08025e04e",
+          "options": {
+            "variantId": "e62fee23-7878-437a-bf0e-292f17d11cb5"
+          }
+        },
+        "productName": {
+          "original": "Shoe",
+          "translated": "Shoe"
+        },
+        "url": {
+          "relativePath": "/product-page/shoe",
+          "url": "https://example.wixsite.com"
+        },
+        "price": {
+          "amount": "85",
+          "convertedAmount": "85",
+          "formattedAmount": "$85.00",
+          "formattedConvertedAmount": "$85.00"
+        },
+        "fullPrice": {
+          "amount": "85",
+          "convertedAmount": "85",
+          "formattedAmount": "$85.00",
+          "formattedConvertedAmount": "$85.00"
+        },
+        "priceBeforeDiscounts": {
+          "amount": "85",
+          "convertedAmount": "85",
+          "formattedAmount": "$85.00",
+          "formattedConvertedAmount": "$85.00"
+        },
+        "descriptionLines": [
+          {
+            "name": {
+              "original": "Color",
+              "translated": "Color"
+            },
+            "colorInfo": {
+              "original": "Black",
+              "translated": "Black",
+              "code": "#000"
+            }
+          }
+        ],
+        "image": {
+          "id": "3c76e2_bf235c38610f4d2a905db71095b351cf~mv2.jpg",
+          "url": "https://static.wixstatic.com/media/3c76e2_bf235c38610f4d2a905db71095b351cf~mv2.jpg",
+          "height": 1000,
+          "width": 1000
+        },
+        "availability": {
+          "status": "AVAILABLE",
+          "quantityAvailable": 30
+        },
+        "physicalProperties": {
+          "sku": "364215376135191",
+          "shippable": true
+        },
+        "couponScopes": [
+          {
+            "namespace": "stores",
+            "group": {
+              "name": "collection",
+              "entityId": "00000000-000000-000000-000000000001"
+            }
+          },
+          {
+            "namespace": "stores",
+            "group": {
+              "name": "product",
+              "entityId": "df19c1f7-07d8-a265-42f8-e8dfa824cc6e"
+            }
+          }
+        ],
+        "itemType": {
+          "preset": "PHYSICAL"
+        },
+        "paymentOption": "FULL_PAYMENT_ONLINE"
+      },
+      {
+        "id": "00000000-0000-0000-0000-000000000002",
+        "quantity": 1,
+        "catalogReference": {
+          "catalogItemId": "c8539b66-7a44-fe18-affc-afec4be8562a",
+          "appId": "215238eb-22a5-4c36-9e7b-e7c08025e04e"
+        },
+        "productName": {
+          "original": "Shirt",
+          "translated": "Shirt"
+        },
+        "url": {
+          "relativePath": "/product-page/shirt",
+          "url": "https://example.wixsite.com"
+        },
+        "price": {
+          "amount": "10",
+          "convertedAmount": "10",
+          "formattedAmount": "$10.00",
+          "formattedConvertedAmount": "$10.00"
+        },
+        "fullPrice": {
+          "amount": "10",
+          "convertedAmount": "10",
+          "formattedAmount": "$10.00",
+          "formattedConvertedAmount": "$10.00"
+        },
+        "priceBeforeDiscounts": {
+          "amount": "10",
+          "convertedAmount": "10",
+          "formattedAmount": "$10.00",
+          "formattedConvertedAmount": "$10.00"
+        },
+        "descriptionLines": [],
+        "image": {
+          "id": "3c76e2_c5331f937348492a97df87b0a3b34ea4~mv2.jpg",
+          "url": "https://static.wixstatic.com/media/3c76e2_c5331f937348492a97df87b0a3b34ea4~mv2.jpg",
+          "height": 1000,
+          "width": 1000
+        },
+        "availability": {
+          "status": "AVAILABLE"
+        },
+        "physicalProperties": {
+          "sku": "364115376135191",
+          "shippable": true
+        },
+        "couponScopes": [
+          {
+            "namespace": "stores",
+            "group": {
+              "name": "collection",
+              "entityId": "00000000-000000-000000-000000000001"
+            }
+          },
+          {
+            "namespace": "stores",
+            "group": {
+              "name": "product",
+              "entityId": "c8539b66-7a44-fe18-affc-afec4be8562a"
+            }
+          }
+        ],
+        "itemType": {
+          "preset": "PHYSICAL"
+        },
+        "paymentOption": "FULL_PAYMENT_ONLINE"
+      }
+    ],
+    "buyerInfo": {
+      "userId": "c43190d2-eea3-493e-b6e8-f146850c6873"
+    },
+    "currency": "USD",
+    "conversionCurrency": "USD",
+    "buyerLanguage": "en",
+    "siteLanguage": "en",
+    "taxIncludedInPrices": false,
+    "weightUnit": "KG",
+    "subtotal": {
+      "amount": "95",
+      "convertedAmount": "95",
+      "formattedAmount": "$95.00",
+      "formattedConvertedAmount": "$95.00"
+    },
+    "appliedDiscounts": [
+      {
+        "coupon": {
+          "id": "fbb94b06-7447-4161-9c48-59bfcdc39e77",
+          "code": "SUMMERSALE10"
+        }
+      }
+    ],
+    "inSync": false,
+    "createdDate": "2022-12-12T08:53:43.520Z",
+    "updatedDate": "2022-12-12T09:23:36.598Z"
+  }
+}
