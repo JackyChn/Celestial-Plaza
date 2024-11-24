@@ -13,7 +13,7 @@ import { getWixClient } from "@/lib/wix-client.base";
 export default function Home() {
   return (
     <main className="mx-auto max-w-7xl space-y-10 px-5 py-10">
-      <div className="flex items-center bg-blue-100 bg-secondary md:h-96">
+      <div className="flex items-center bg-secondary bg-sky-100 md:h-96">
         {/* text & button */}
         <div className="flex flex-col items-center justify-center space-y-7 p-10 text-center md:w-1/2">
           {/* <h1 className="text-3xl font-bold md:text-4xl">
@@ -48,7 +48,7 @@ export default function Home() {
             alt="banner"
             className="h-full w-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-100 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-r from-sky-100 via-transparent to-transparent" />
         </div>
       </div>
       <Suspense fallback={<Spinner />}>
