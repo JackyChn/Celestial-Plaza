@@ -13,7 +13,7 @@ import { reviews } from "@wix/reviews";
 import { createClient, OAuthStrategy, Tokens } from "@wix/sdk";
 import { collections, products } from "@wix/stores";
 
-export function getWixClient(tokens: Tokens | undefined) {
+export function getWixClient() {
   return createClient({
     modules: {
       products,
@@ -30,7 +30,6 @@ export function getWixClient(tokens: Tokens | undefined) {
     },
     auth: OAuthStrategy({
       clientId: env.NEXT_PUBLIC_WIX_CLIENT_ID,
-      tokens,
     }),
   });
 }

@@ -5,6 +5,10 @@ import { ArrowRight } from "lucide-react";
 import { LitupBorderButton } from "@/components/ui/LitupBorderButton";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import { TextRevealCard } from "@/components/ui/TextRevealCard";
+import { delay } from "@/lib/utils";
+import { Suspense } from "react";
+import Spinner from "@/components/ui/Spinner";
+import { getWixClient } from "@/lib/wix-client.base";
 
 export default function Home() {
   return (
@@ -47,6 +51,17 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-r from-blue-100 via-transparent to-transparent" />
         </div>
       </div>
+      <Suspense fallback={<Spinner />}>
+        <FeaturedProducts />
+      </Suspense>
     </main>
   );
+}
+
+async function FeaturedProducts() {
+  await delay(1000);
+
+  const wixClient = getWixClient();
+
+  return "Featured Products";
 }
