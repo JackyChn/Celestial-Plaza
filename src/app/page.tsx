@@ -9,6 +9,8 @@ import { delay } from "@/lib/utils";
 import { Suspense } from "react";
 import Spinner from "@/components/ui/Spinner";
 import { getWixClient } from "@/lib/wix-client.base";
+import { collections, products } from "@wix/stores";
+import Product from "@/components/Product";
 
 export default function Home() {
   return (
@@ -62,6 +64,30 @@ async function FeaturedProducts() {
   await delay(1000);
 
   const wixClient = getWixClient();
+  // get featured collections by featured name
+  const { collection } =
+    await wixClient.collections.getCollectionBySlug("featured-products");
+  if (!collection?._id) return null;
 
-  return "Featured Products";
+  const featuredProducts = await wixClient.products
+    .queryProducts()
+    .hasSome("collectionIds", [collection._id])
+    .descending("lastUpdated")
+    .find();
+
+  // no product found
+  if (!featuredProducts.items.length) {
+    return null;
+  }
+
+  return (
+    <div className="space-y-5">
+      <h2 className="text-2xl font-bold">Featured Products</h2>
+      <div className="felx grid-cols-2 flex-col sm:grid md:grid-cols-3 lg:grid-cols-4">
+        {featuredProducts.items.map((product) => (
+          <Product product={product} key={product._id} />
+        ))}
+      </div>
+    </div>
+  );
 }

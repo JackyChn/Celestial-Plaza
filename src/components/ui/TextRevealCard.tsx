@@ -175,7 +175,7 @@ const Stars = () => {
             left: `${random() * 100}%`,
             width: `2px`,
             height: `2px`,
-            backgroundColor: "blue",
+            backgroundColor: "#1e3a8a",
             borderRadius: "50%",
             zIndex: 1,
           }}
