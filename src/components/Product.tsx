@@ -2,6 +2,7 @@ import { formatCurrency } from "@/lib/utils";
 import { products } from "@wix/stores";
 import Link from "next/link";
 import WixImage from "./WixImage";
+import Badge from "./ui/badge";
 
 interface ProductProps {
   product: products.Product;
@@ -12,6 +13,7 @@ export default function Product({ product }: ProductProps) {
 
   return (
     <Link href={`/products/${product.slug}`} className="h-full border bg-card">
+      {/* image & ribbon */}
       <div className="relative overflow-hidden">
         <WixImage
           mediaIdentifier={mainImage?.url}
@@ -20,14 +22,22 @@ export default function Product({ product }: ProductProps) {
           height={700}
           className="transition-transform duration-300 hover:scale-105"
         />
-        <div className="space-y-3 p-3">
-          <h3 className="text-lg font-bold">{product.name}</h3>
-          <div
-            className="line-clamp-5"
-            dangerouslySetInnerHTML={{ __html: product.description || "" }}
-          />
-          {/* <div className="line-clamp-5">{product.description}</div> */}
+        <div className="absolute bottom-3 right-3 flex flex-wrap items-center gap-2">
+          {product.ribbon && <Badge>{product.ribbon}</Badge>}
+          <Badge className="bg-secondary font-semibold text-secondary-foreground">
+            {getFormattedPrice(product)}
+          </Badge>
         </div>
+      </div>
+
+      {/* name & description */}
+      <div className="space-y-3 p-3">
+        <h3 className="text-lg font-bold">{product.name}</h3>
+        <div
+          className="line-clamp-5"
+          dangerouslySetInnerHTML={{ __html: product.description || "" }}
+        />
+        {/* <div className="line-clamp-5">{product.description}</div> */}
       </div>
     </Link>
   );

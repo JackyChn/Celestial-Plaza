@@ -19,9 +19,6 @@ export default function Home() {
       <div className="flex items-center bg-secondary bg-sky-100 md:h-96">
         {/* text & button */}
         <div className="flex flex-col items-center justify-center space-y-7 p-10 text-center md:w-1/2">
-          {/* <h1 className="text-3xl font-bold md:text-4xl">
-            Fill the Gap of your heart
-          </h1> */}
           <TextRevealCard
             text="Wanna do some shopping?"
             revealText="Fill the Gap of your heart!"
@@ -89,7 +86,6 @@ async function FeaturedProducts() {
           <Product product={product} key={product._id} />
         ))}
       </div>
-      <pre>{JSON.stringify(featuredProducts, null, 2)}</pre>
     </div>
   );
 }
