@@ -2,8 +2,8 @@ import { formatCurrency } from "@/lib/utils";
 import { products } from "@wix/stores";
 import Link from "next/link";
 import WixImage from "./WixImage";
-import Badge from "./ui/badge";
 import DiscountBadge from "./ui/DiscountBadge";
+import Badge from "./ui/badge";
 
 interface ProductProps {
   product: products.Product;

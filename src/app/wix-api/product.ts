@@ -5,6 +5,7 @@ interface QueryProductsFilter {
   sort: ProductSort;
 }
 
+// R: all products logic
 export async function queryProudcts({
   collectionIds,
   sort = "last_updated",
@@ -39,4 +40,22 @@ export async function queryProudcts({
   }
 
   return query.find();
+}
+
+// R: product by slug
+export async function getProductBySlug(slug: string) {
+  const wixClient = getWixClient();
+
+  const { items } = await wixClient.products
+    .queryProducts()
+    .eq("slug", slug)
+    .limit(1) // only find one
+    .find();
+
+  const product = items[0]; // get that product
+  if (!product || !product.visible) {
+    return null;
+  }
+
+  return product;
 }
