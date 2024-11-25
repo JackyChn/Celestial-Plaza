@@ -1,4 +1,5 @@
-import { getWixClient } from "@/lib/wix-client.base";
+import { getWixClient, WixClient } from "@/lib/wix-client.base";
+import { cache } from "react";
 
 interface QueryProductsFilter {
   collectionIds?: string[] | string;
@@ -43,19 +44,19 @@ export async function queryProudcts({
 }
 
 // R: product by slug
-export async function getProductBySlug(slug: string) {
+export const getProductBySlug = cache(async (slug: string) => {
   const wixClient = getWixClient();
-
   const { items } = await wixClient.products
     .queryProducts()
     .eq("slug", slug)
-    .limit(1) // only find one
+    .limit(1)
     .find();
 
-  const product = items[0]; // get that product
+  const product = items[0];
+
   if (!product || !product.visible) {
     return null;
   }
 
   return product;
-}
+});
