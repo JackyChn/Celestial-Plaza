@@ -7,9 +7,10 @@ import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import { TextRevealCard } from "@/components/ui/TextRevealCard";
 import { delay } from "@/lib/utils";
 import { Suspense } from "react";
-import { getWixClient } from "@/lib/wix-client.base";
 import Product from "@/components/Product";
 import { Skeleton } from "@/components/ui/skeleton";
+import { getCollectionsBySlug } from "./wix-api/collections";
+import { queryProudcts } from "./wix-api/product";
 
 export default function Home() {
   return (
@@ -59,17 +60,13 @@ export default function Home() {
 async function FeaturedProducts() {
   await delay(1000);
 
-  const wixClient = getWixClient();
-  // get featured collections by featured name
-  const { collection } =
-    await wixClient.collections.getCollectionBySlug("featured-products");
+  const collection = await getCollectionsBySlug("featured-products");
   if (!collection?._id) return null;
 
-  const featuredProducts = await wixClient.products
-    .queryProducts()
-    .hasSome("collectionIds", [collection._id])
-    .descending("lastUpdated")
-    .find();
+  const featuredProducts = await queryProudcts({
+    collectionIds: collection._id,
+    sort: "last_updated",
+  });
 
   // no product found
   if (!featuredProducts.items.length) {
