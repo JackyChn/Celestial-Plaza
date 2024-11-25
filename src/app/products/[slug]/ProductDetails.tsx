@@ -2,14 +2,41 @@
 
 import Badge from "@/components/ui/badge";
 import WixImage from "@/components/WixImage";
-import React from "react";
+import React, { useState } from "react";
 import { products } from "@wix/stores";
+import ProductOptions from "./ProductOptions";
 
 interface ProductDetailsProps {
   product: products.Product;
 }
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
+  const [quantity, setQuantity] = useState(1);
+
+  const [selectedOptions, setSelectedOptions] = useState<
+    Record<string, string>
+  >(
+    product.productOptions
+      /* e.g.
+      product.productOptions =
+        [
+            { name: "color", choices: [{ description: "red" }, { description: "blue" }] },
+            { name: "size", choices: [{ description: "large" }, { description: "small" }] }
+        ],
+        then after map, it becomes:
+        [
+            { color: "red" },
+            { size: "large" }
+        ],
+        then after ruduce, it becomes:
+        { color: "red", size: "large" }
+        which gives the first color and first size choice (typically, encapsulate every first choice of every option to an object)
+    */
+      ?.map((option) => ({
+        [option.name || ""]: option.choices?.[0].description || "",
+      }))
+      ?.reduce((acc, curr) => ({ ...acc, ...curr }), {}) || {},
+  );
   return (
     <div className="flex flex-col gap-10 md:flex-row lg:gap-20">
       {/* product image */}
@@ -35,9 +62,18 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
         {product.description && (
           <div
             dangerouslySetInnerHTML={{ __html: product.description }}
-            className="prose dark:prose-invert"
+            className="text-black dark:text-slate-100"
           />
         )}
+        <ProductOptions
+          product={product}
+          selectedOptions={selectedOptions}
+          setSelectedOptions={setSelectedOptions}
+        />
+        <div>
+          Selected options:
+          {JSON.stringify(selectedOptions)}
+        </div>
       </div>
     </div>
   );

@@ -24,18 +24,11 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={lora.className}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem={true}
-          disableTransitionOnChange
-        >
-          <ReactQueryProvider>
-            <NavBar />
-            <div className="min-h-[50vh]">{children}</div>
-            <Footer />
-          </ReactQueryProvider>
-        </ThemeProvider>
+        <ReactQueryProvider>
+          <NavBar />
+          <div className="min-h-[50vh]">{children}</div>
+          <Footer />
+        </ReactQueryProvider>
       </body>
     </html>
   );
