@@ -41,8 +41,10 @@ export function checkInStock(
   const variant = findVariant(product, selectedOptions);
 
   return variant
-    ? variant.stock?.quantity !== 0 && variant.stock?.inStock
-    : product.stock?.inventoryStatus === products.InventoryStatus.IN_STOCK ||
+    ? // check if quantity is not 0 and inStock, yes then return true, else false
+      variant.stock?.quantity !== 0 && variant.stock?.inStock
+    : // then check inventoryStatus: inStock or partiallyOutOfStock, yes then return true, else false
+      product.stock?.inventoryStatus === products.InventoryStatus.IN_STOCK ||
         product.stock?.inventoryStatus ===
           products.InventoryStatus.PARTIALLY_OUT_OF_STOCK;
 }

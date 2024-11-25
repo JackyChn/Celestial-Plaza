@@ -1,4 +1,5 @@
 import { Label } from "@/components/ui/label";
+import { checkInStock, cn } from "@/lib/utils";
 import { products } from "@wix/stores";
 import React from "react";
 
@@ -35,6 +36,12 @@ export default function ProductOptions({
                   id={choice.description}
                   name={option.name}
                   value={choice.description}
+                  disabled={
+                    !checkInStock(product, {
+                      ...selectedOptions,
+                      [option.name || ""]: choice.description || "",
+                    })
+                  }
                   checked={
                     // select the option that passed in by default
                     selectedOptions[option.name || "name"] ===
@@ -52,7 +59,13 @@ export default function ProductOptions({
                 {/* what shown on the radio button: color and choice name */}
                 <Label
                   htmlFor={choice.description}
-                  className="min-2-14 flex cursor-pointer items-center justify-center gap-1.5 border p-2 peer-checked:border-primary"
+                  className={cn(
+                    "min-2-14 flex cursor-pointer items-center justify-center gap-1.5 border p-2 peer-checked:border-primary",
+                    !checkInStock(product, {
+                      ...selectedOptions,
+                      [option.name || ""]: choice.description || "",
+                    }) && "opacity-0",
+                  )}
                 >
                   {option.optionType === products.OptionType.color && (
                     // the radio round button
