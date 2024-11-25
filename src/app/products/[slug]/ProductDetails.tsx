@@ -6,6 +6,7 @@ import React, { useState } from "react";
 import { products } from "@wix/stores";
 import ProductOptions from "./ProductOptions";
 import { checkInStock, findVariant } from "@/lib/utils";
+import ProductPrice from "./ProductPrice";
 
 interface ProductDetailsProps {
   product: products.Product;
@@ -13,7 +14,6 @@ interface ProductDetailsProps {
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
   const [quantity, setQuantity] = useState(1);
-
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>
   >(
@@ -33,15 +33,15 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
         { color: "red", size: "large" }
         which gives the first color and first size choice (typically, encapsulate every first choice of every option to an object)
     */
+      //  refer more in Porduct.json, productOptions
       ?.map((option) => ({
         [option.name || ""]: option.choices?.[0].description || "",
       }))
       ?.reduce((acc, curr) => ({ ...acc, ...curr }), {}) || {},
   );
-
   const selectedVariant = findVariant(product, selectedOptions);
-
   const inStock = checkInStock(product, selectedOptions); // true/false
+
   return (
     <div className="flex flex-col gap-10 md:flex-row lg:gap-20">
       {/* product image */}
@@ -70,6 +70,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
             className="text-black dark:text-slate-100"
           />
         )}
+        <ProductPrice product={product} selectedVariant={selectedVariant} />
         <ProductOptions
           product={product}
           selectedOptions={selectedOptions}

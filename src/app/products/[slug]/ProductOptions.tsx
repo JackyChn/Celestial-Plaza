@@ -1,3 +1,5 @@
+//  this is not a server compo since it is not pure server compo
+//  since it has no server actions, so it will treat as a client compo this time
 import { Label } from "@/components/ui/label";
 import { checkInStock, cn } from "@/lib/utils";
 import { products } from "@wix/stores";
@@ -56,19 +58,20 @@ export default function ProductOptions({
                   }
                   className="peer hidden"
                 />
+
                 {/* what shown on the radio button: color and choice name */}
                 <Label
                   htmlFor={choice.description}
                   className={cn(
-                    "min-2-14 flex cursor-pointer items-center justify-center gap-1.5 border p-2 peer-checked:border-primary",
+                    "min-2-14 flex cursor-pointer items-center justify-center gap-1.5 border border-black p-2 peer-checked:border-primary",
                     !checkInStock(product, {
                       ...selectedOptions,
                       [option.name || ""]: choice.description || "",
-                    }) && "opacity-0",
+                    }) && "border-slate-100 opacity-0",
                   )}
                 >
                   {option.optionType === products.OptionType.color && (
-                    // the radio round button
+                    // the radio round circle
                     <span
                       className="size-4 rounded-full border"
                       style={{ backgroundColor: choice.value }}
