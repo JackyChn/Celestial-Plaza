@@ -7,6 +7,7 @@ import { products } from "@wix/stores";
 import ProductOptions from "./ProductOptions";
 import { checkInStock, findVariant } from "@/lib/utils";
 import ProductPrice from "./ProductPrice";
+import ProductMedia from "./ProductMedia";
 
 interface ProductDetailsProps {
   product: products.Product;
@@ -45,15 +46,7 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   return (
     <div className="flex flex-col gap-10 md:flex-row lg:gap-20">
       {/* product image */}
-      <div className="basis-2/5">
-        <WixImage
-          mediaIdentifier={product.media?.mainMedia?.image?.url}
-          alt={product.media?.mainMedia?.image?.altText}
-          width={1000}
-          height={1000}
-          className="sticky top-0"
-        />
-      </div>
+      <ProductMedia media={product?.media?.items} />
 
       {/* product info */}
       <div className="basis-3/5 space-y-5">
