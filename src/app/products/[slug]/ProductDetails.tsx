@@ -1,11 +1,10 @@
 "use client";
 
 import Badge from "@/components/ui/badge";
-import WixImage from "@/components/WixImage";
 import React, { useState } from "react";
 import { products } from "@wix/stores";
 import ProductOptions from "./ProductOptions";
-import { checkInStock, findVariant } from "@/lib/utils";
+import { checkInStock, cn, findVariant } from "@/lib/utils";
 import ProductPrice from "./ProductPrice";
 import ProductMedia from "./ProductMedia";
 import { Label } from "@/components/ui/label";
@@ -17,13 +16,14 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import AddToCartButton from "@/components/ui/AddCartButton";
 
 interface ProductDetailsProps {
   product: products.Product;
 }
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>
   >(
@@ -102,17 +102,21 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
         />
         {/* <div>Varients: {JSON.stringify(selectedVariant)}</div> */}
         <div className="space-y-1.5">
-          <Label htmlFor="quantity">Quantity</Label>
+          <Label htmlFor="quantity">Add Quantity to Cart:</Label>
           <div className="flex items-center gap-2.5">
             <Input
               name="quantity"
               type="number"
               value={quantity}
               onChange={(e) => setQuantity(Number(e.target.value))}
-              className="w-24"
+              className={cn(
+                `w-24`,
+                !inStock
+                  ? "border border-slate-200"
+                  : "border border-slate-950",
+              )}
               disabled={!inStock}
             />
-
             {!!availableQuantity &&
               (availableQuantityExceeded || availableQuantity < 10) && (
                 <span className="text-destructive">
@@ -121,6 +125,15 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
               )}
           </div>
         </div>
+        {inStock ? (
+          <AddToCartButton
+            product={product}
+            selectedOptions={selectedOptions}
+            quantity={quantity}
+          />
+        ) : (
+          "Out of stock"
+        )}
         {!!product.additionalInfoSections?.length && (
           <div className="space-y-1.5 text-sm text-muted-foreground">
             <span className="flex items-center gap-2">

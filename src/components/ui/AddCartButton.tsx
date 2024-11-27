@@ -1,7 +1,5 @@
-import { cn } from "@/lib/utils";
 import { products } from "@wix/stores";
-import { ShoppingCartIcon } from "lucide-react";
-import { Button, ButtonProps } from "./ui/button";
+import { Button, ButtonProps } from "./button";
 import { addToCart } from "@/app/wix-api/cart";
 import { WixClient } from "@wix/sdk";
 import { wixBrowserClient } from "@/lib/wix-client-browser";
@@ -12,16 +10,13 @@ interface AddToCartButtonProps extends ButtonProps {
   quantity: number;
 }
 
-export default function AddToCartButton(
-  wixClient: WixClient,
-  {
-    product,
-    selectedOptions,
-    quantity,
-    className,
-    ...props
-  }: AddToCartButtonProps,
-) {
+export default function AddToCartButton({
+  product,
+  selectedOptions,
+  quantity,
+  className,
+  ...props
+}: AddToCartButtonProps) {
   return (
     <Button
       onClick={() =>
@@ -32,6 +27,8 @@ export default function AddToCartButton(
         })
       }
       {...props}
-    ></Button>
+    >
+      Add to Cart
+    </Button>
   );
 }
