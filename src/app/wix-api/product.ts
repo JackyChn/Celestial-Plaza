@@ -1,4 +1,4 @@
-import { getWixClient, WixClient } from "@/lib/wix-client.base";
+import { WixClient } from "@/lib/wix-client.base";
 import { cache } from "react";
 
 interface QueryProductsFilter {

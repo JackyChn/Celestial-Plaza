@@ -5,12 +5,12 @@ import { ArrowRight } from "lucide-react";
 import { LitupBorderButton } from "@/components/ui/LitupBorderButton";
 import { TextGenerateEffect } from "@/components/ui/TextGenerateEffect";
 import { TextRevealCard } from "@/components/ui/TextRevealCard";
-import { delay } from "@/lib/utils";
 import { Suspense } from "react";
 import Product from "@/components/Product";
 import { Skeleton } from "@/components/ui/skeleton";
 import { getCollectionsBySlug } from "./wix-api/collections";
 import { queryProudcts } from "./wix-api/product";
+import { getWixServerClient } from "@/lib/wix-client.server";
 
 export default function Home() {
   return (
@@ -58,12 +58,12 @@ export default function Home() {
 }
 
 async function FeaturedProducts() {
-  await delay(1000);
+  const wixClient = getWixServerClient();
 
-  const collection = await getCollectionsBySlug("featured-products");
+  const collection = await getCollectionsBySlug(wixClient, "featured-products");
   if (!collection?._id) return null;
 
-  const featuredProducts = await queryProudcts({
+  const featuredProducts = await queryProudcts(wixClient, {
     collectionIds: collection._id,
     sort: "last_updated",
   });
