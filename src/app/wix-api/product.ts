@@ -7,12 +7,10 @@ interface QueryProductsFilter {
 }
 
 // R: all products logic
-export async function queryProudcts({
-  collectionIds,
-  sort = "last_updated",
-}: QueryProductsFilter) {
-  const wixClient = getWixClient();
-
+export async function queryProudcts(
+  wixClient: WixClient,
+  { collectionIds, sort = "last_updated" }: QueryProductsFilter,
+) {
   let query = wixClient.products.queryProducts();
   // .hasSome("collectionIds", [collection._id])
   // .descending("lastUpdated")
@@ -44,19 +42,20 @@ export async function queryProudcts({
 }
 
 // R: product by slug
-export const getProductBySlug = cache(async (slug: string) => {
-  const wixClient = getWixClient();
-  const { items } = await wixClient.products
-    .queryProducts()
-    .eq("slug", slug)
-    .limit(1)
-    .find();
+export const getProductBySlug = cache(
+  async (wixClient: WixClient, slug: string) => {
+    const { items } = await wixClient.products
+      .queryProducts()
+      .eq("slug", slug)
+      .limit(1)
+      .find();
 
-  const product = items[0];
+    const product = items[0];
 
-  if (!product || !product.visible) {
-    return null;
-  }
+    if (!product || !product.visible) {
+      return null;
+    }
 
-  return product;
-});
+    return product;
+  },
+);
