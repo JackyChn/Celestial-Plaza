@@ -8,13 +8,22 @@ import ProductOptions from "./ProductOptions";
 import { checkInStock, findVariant } from "@/lib/utils";
 import ProductPrice from "./ProductPrice";
 import ProductMedia from "./ProductMedia";
+import { Label } from "@/components/ui/label";
+import { Input } from "@/components/ui/input";
+import { InfoIcon } from "lucide-react";
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
 
 interface ProductDetailsProps {
   product: products.Product;
 }
 
 export default function ProductDetails({ product }: ProductDetailsProps) {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(0);
   const [selectedOptions, setSelectedOptions] = useState<
     Record<string, string>
   >(
@@ -43,10 +52,32 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
   const selectedVariant = findVariant(product, selectedOptions);
   const inStock = checkInStock(product, selectedOptions); // true/false
 
+  const availableQuantity =
+    selectedVariant?.stock?.quantity ?? product.stock?.quantity;
+
+  // boolean type
+  const availableQuantityExceeded =
+    !!availableQuantity && quantity > availableQuantity; // turn availableQuantity to boolean with !!
+
+  // please refer the Product.json
+  const selectedOptionsMedia = product.productOptions?.flatMap((option) => {
+    const selectedChoice = option.choices?.find(
+      (choice) => choice.description === selectedOptions[option.name || ""],
+    );
+    return selectedChoice?.media?.items ?? [];
+  });
+
   return (
     <div className="flex flex-col gap-10 md:flex-row lg:gap-20">
       {/* product image */}
-      <ProductMedia media={product?.media?.items} />
+      {/* only shows the selected options' pictures */}
+      <ProductMedia
+        media={
+          !!selectedOptionsMedia?.length
+            ? selectedOptionsMedia
+            : product.media?.items
+        }
+      />
 
       {/* product info */}
       <div className="basis-3/5 space-y-5">
@@ -69,11 +100,52 @@ export default function ProductDetails({ product }: ProductDetailsProps) {
           selectedOptions={selectedOptions}
           setSelectedOptions={setSelectedOptions}
         />
-        <div>
-          Selected options:
-          {JSON.stringify(selectedOptions)}
+        {/* <div>Varients: {JSON.stringify(selectedVariant)}</div> */}
+        <div className="space-y-1.5">
+          <Label htmlFor="quantity">Quantity</Label>
+          <div className="flex items-center gap-2.5">
+            <Input
+              name="quantity"
+              type="number"
+              value={quantity}
+              onChange={(e) => setQuantity(Number(e.target.value))}
+              className="w-24"
+              disabled={!inStock}
+            />
+
+            {!!availableQuantity &&
+              (availableQuantityExceeded || availableQuantity < 10) && (
+                <span className="text-destructive">
+                  Only {availableQuantity} left in stock
+                </span>
+              )}
+          </div>
         </div>
-        <div>Varients: {JSON.stringify(selectedVariant)}</div>
+        {!!product.additionalInfoSections?.length && (
+          <div className="space-y-1.5 text-sm text-muted-foreground">
+            <span className="flex items-center gap-2">
+              <InfoIcon className="size-5" />
+              <span>Additional product information</span>
+            </span>
+
+            {/* shadcn Accordion, refer the official doc */}
+            <Accordion type="multiple">
+              {product.additionalInfoSections.map((section) => (
+                <AccordionItem value={section.title || ""} key={section.title}>
+                  <AccordionTrigger>{section.title}</AccordionTrigger>
+                  <AccordionContent>
+                    <div
+                      dangerouslySetInnerHTML={{
+                        __html: section.description || "",
+                      }}
+                      className="prose text-sm text-muted-foreground dark:prose-invert"
+                    />
+                  </AccordionContent>
+                </AccordionItem>
+              ))}
+            </Accordion>
+          </div>
+        )}
       </div>
     </div>
   );

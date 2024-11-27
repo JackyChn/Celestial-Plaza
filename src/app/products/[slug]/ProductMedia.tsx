@@ -3,7 +3,7 @@ import WixImage from "@/components/WixImage";
 import { cn } from "@/lib/utils";
 import { products } from "@wix/stores";
 import { PlayIcon } from "lucide-react";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Zoom from "react-medium-image-zoom";
 
 interface ProductMediaProps {
@@ -17,7 +17,13 @@ interface MediaPreviewProps {
 }
 
 export default function ProductMedia({ media }: ProductMediaProps) {
-  const [selectedMedia, setSelectedMedia] = useState(media?.[0]); // points to mainMedia, refer offical doc ref v1, the Product.json does not have it
+  const [selectedMedia, setSelectedMedia] = useState(media?.[0]);
+
+  // important to change selectedMedia state once the media passed in changed or selectedMedia will stay static
+  useEffect(() => {
+    setSelectedMedia(media?.[0]);
+  }, [media]);
+
   if (!media?.length) return null;
 
   const selectedImage = selectedMedia?.image;
