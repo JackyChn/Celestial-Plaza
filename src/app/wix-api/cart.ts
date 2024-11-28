@@ -5,6 +5,7 @@ import { products } from "@wix/stores";
 
 export async function getCart(wixClient: WixClient) {
   try {
+    // not getCart() cause it needs a unique cartID, but we expecting current web visitors so we use getCurrentCart()
     return await wixClient.currentCart.getCurrentCart();
   } catch (error) {
     if (

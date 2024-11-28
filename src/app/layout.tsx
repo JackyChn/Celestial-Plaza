@@ -5,6 +5,7 @@ import "./globals.css";
 import NavBar from "@/components/ui/NavBar";
 import ReactQueryProvider from "@/components/ReactQueryProvider";
 import Footer from "@/components/ui/Footer";
+import { Toaster } from "@/components/ui/toaster";
 
 const lora = Lora({ subsets: ["latin"] });
 
@@ -29,6 +30,7 @@ export default function RootLayout({
           <div className="min-h-[50vh]">{children}</div>
           <Footer />
         </ReactQueryProvider>
+        <Toaster />
       </body>
     </html>
   );

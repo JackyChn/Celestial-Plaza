@@ -3,6 +3,7 @@ import { getWixServerClient } from "@/lib/wix-client.server";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import ShoppingCartButton from "./ShoppingCartButton";
 
 export default async function NavBar() {
   const mainCart = await getCart(getWixServerClient());
@@ -17,9 +18,7 @@ export default async function NavBar() {
           <Image src={"/logo.png"} alt="Logo" width={40} height={40} />
           <span className="text-xl font-bold">Celestial Plaza</span>
         </Link>
-        <p className="flex items-center justify-center">
-          {totalQuantity} added in your cart!
-        </p>
+        <ShoppingCartButton initialData={mainCart} />
       </div>
     </header>
   );
