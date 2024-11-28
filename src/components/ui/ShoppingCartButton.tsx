@@ -1,10 +1,10 @@
 "use client";
 
-import { useCart } from "@/hooks/cart";
+import { useCart, useUpdateCartItemQuantity } from "@/hooks/cart";
 import { currentCart } from "@wix/ecom";
 import React, { useState } from "react";
 import { Button } from "./button";
-import { ShoppingCartIcon } from "lucide-react";
+import { Loader2, ShoppingCartIcon } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -13,6 +13,7 @@ import {
 } from "@/components/ui/sheet";
 import Link from "next/link";
 import WixImage from "../WixImage";
+import { cn } from "@/lib/utils";
 
 interface ShoppingCartButtonProps {
   initialData: currentCart.Cart | null;
@@ -23,8 +24,7 @@ export default function ShoppingCartButton({
 }: ShoppingCartButtonProps) {
   const [sheetOpen, setSheetOpen] = useState(false);
 
-  const { data: cartQueryData, isLoading, error } = useCart(initialData);
-  // console.log(cartQueryData);
+  const { data: cartQueryData, isFetching, error } = useCart(initialData);
   //   refer Cart.json
   const totalQuantity =
     cartQueryData?.lineItems?.reduce(
@@ -42,6 +42,7 @@ export default function ShoppingCartButton({
           </span>
         </Button>
       </div>
+      {/* side sheet for cart info */}
       <Sheet open={sheetOpen} onOpenChange={setSheetOpen}>
         <SheetContent className="flex flex-col sm:max-w-lg">
           {/* header */}
@@ -59,7 +60,25 @@ export default function ShoppingCartButton({
                 <ShoppingCartItem key={item._id} item={item} />
               ))}
             </ul>
-            {/* <pre>{JSON.stringify(cartQueryData, null, 2)}</pre> */}
+            {/* isLoading cart */}
+            {isFetching && <Loader2 className="mx-auto animate-spin" />}
+            {/* loading cart error */}
+            {error && <p className="text-destructive">{error.message}</p>}
+            {/* is not loading and no item, cart is empty, show go shopping link */}
+            {!isFetching && !cartQueryData?.lineItems?.length && (
+              <div className="flex grow items-center justify-center text-center">
+                <div className="space-y-1.5">
+                  <p className="">Your cart is empty</p>
+                  <Link
+                    href={"/shop"}
+                    className="text-primary hover:underline"
+                    onClick={() => setSheetOpen(false)}
+                  >
+                    Start shopping now
+                  </Link>
+                </div>
+              </div>
+            )}
           </div>
           <div className="flex items-center justify-between gap-5">
             <div className="space-y-0.5">
@@ -72,6 +91,9 @@ export default function ShoppingCartButton({
               </p>
             </div>
           </div>
+          <Button size={"lg"} disabled={!totalQuantity || isFetching}>
+            Checkout
+          </Button>
         </SheetContent>
       </Sheet>
     </>
@@ -83,7 +105,9 @@ interface ShoppingCartItemProps {
 }
 
 function ShoppingCartItem({ item }: ShoppingCartItemProps) {
+  const updateQuantityMutation = useUpdateCartItemQuantity();
   const slug = item.url?.split("/").pop();
+  const productId = item._id;
 
   const quantityLimitReached =
     !!item.quantity &&
@@ -129,7 +153,17 @@ function ShoppingCartItem({ item }: ShoppingCartItemProps) {
           <Button
             variant={"outline"}
             size={"sm"}
-            disabled={item.quantity === 1}
+            disabled={item?.quantity === 1}
+            className={cn(
+              item?.quantity === 1 ? "border-slate-300" : "border-slate-950",
+            )}
+            onClick={() =>
+              updateQuantityMutation.mutate({
+                productId: item._id!,
+                // quantity undefined then put it as 0
+                newQuantity: !item.quantity ? 0 : item.quantity - 1,
+              })
+            }
           >
             -
           </Button>
@@ -138,6 +172,16 @@ function ShoppingCartItem({ item }: ShoppingCartItemProps) {
             variant={"outline"}
             size={"sm"}
             disabled={quantityLimitReached}
+            className={cn(
+              quantityLimitReached ? "border-slate-300" : "border-slate-950",
+            )}
+            onClick={() =>
+              updateQuantityMutation.mutate({
+                productId: item._id!,
+                // quantity undefined then put it as 1
+                newQuantity: !item.quantity ? 1 : item.quantity + 1,
+              })
+            }
           >
             +
           </Button>
