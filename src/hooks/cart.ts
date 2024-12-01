@@ -2,12 +2,12 @@ import {
   addToCart,
   AddToCartValues,
   getCart,
+  removeCartItem,
   updateCartItemQuantity,
   UpdateCartItemQuantityValues,
 } from "@/app/wix-api/cart";
 import { wixBrowserClient } from "@/lib/wix-client-browser";
 import {
-  MutationKey,
   QueryKey,
   useMutation,
   useQuery,
@@ -86,6 +86,42 @@ export function useUpdateCartItemQuantity() {
     },
     onSettled: () => {
       // Force refetch from the server
+      queryClient.invalidateQueries({ queryKey });
+    },
+  });
+}
+
+export function useRemoveCartItem() {
+  const queryClient = useQueryClient();
+
+  const { toast } = useToast();
+
+  return useMutation({
+    mutationFn: (productId: string) =>
+      removeCartItem(wixBrowserClient, productId),
+    onMutate: async (productId) => {
+      await queryClient.cancelQueries({ queryKey });
+
+      const previousState =
+        queryClient.getQueryData<currentCart.Cart>(queryKey);
+
+      queryClient.setQueryData<currentCart.Cart>(queryKey, (oldData) => ({
+        ...oldData,
+        lineItems: oldData?.lineItems?.filter(
+          (lineItem) => lineItem._id !== productId,
+        ),
+      }));
+      return { previousState };
+    },
+    onError(error, variables, context) {
+      queryClient.setQueryData(queryKey, context?.previousState);
+      console.error(error);
+      toast({
+        variant: "destructive",
+        description: "Cannot remove item currently, please try again...",
+      });
+    },
+    onSettled() {
       queryClient.invalidateQueries({ queryKey });
     },
   });

@@ -1,10 +1,14 @@
 "use client";
 
-import { useCart, useUpdateCartItemQuantity } from "@/hooks/cart";
+import {
+  useCart,
+  useRemoveCartItem,
+  useUpdateCartItemQuantity,
+} from "@/hooks/cart";
 import { currentCart } from "@wix/ecom";
 import React, { useState } from "react";
 import { Button } from "./button";
-import { Loader2, ShoppingCartIcon } from "lucide-react";
+import { Loader2, ShoppingCartIcon, X } from "lucide-react";
 import {
   Sheet,
   SheetContent,
@@ -54,7 +58,7 @@ export default function ShoppingCartButton({
               </span>
             </SheetTitle>
           </SheetHeader>
-          <div className="flex grow flex-col space-y-2 overflow-auto">
+          <div className="flex grow flex-col space-y-2 overflow-auto pt-1">
             <ul className="space-y-5">
               {cartQueryData?.lineItems.map((item) => (
                 <ShoppingCartItem key={item._id} item={item} />
@@ -106,8 +110,11 @@ interface ShoppingCartItemProps {
 
 function ShoppingCartItem({ item }: ShoppingCartItemProps) {
   const updateQuantityMutation = useUpdateCartItemQuantity();
-  const slug = item.url?.split("/").pop();
+  const removeItemMutatation = useRemoveCartItem();
   const productId = item._id;
+
+  if (!productId) return null;
+  const slug = item.url?.split("/").pop();
 
   const quantityLimitReached =
     !!item.quantity &&
@@ -116,15 +123,23 @@ function ShoppingCartItem({ item }: ShoppingCartItemProps) {
 
   return (
     <li className="flex items-center gap-3">
-      <Link href={`/products/${slug}`}>
-        <WixImage
-          mediaIdentifier={item.image}
-          width={110}
-          height={110}
-          alt={item?.productName?.translated || "Porduct Image"}
-          className="flex-none bg-secondary"
-        />
-      </Link>
+      <div className="relative size-fit flex-none">
+        <Link href={`/products/${slug}`}>
+          <WixImage
+            mediaIdentifier={item.image}
+            width={110}
+            height={110}
+            alt={item?.productName?.translated || "Porduct Image"}
+            className="flex-none bg-secondary"
+          />
+        </Link>
+        <button
+          className="absolute -right-1 -top-1 rounded-full border bg-background p-0.5"
+          onClick={() => removeItemMutatation.mutate(productId)}
+        >
+          <X className="size-3" />
+        </button>
+      </div>
       <div className="space-y-1.5 text-sm">
         <Link href={`/products/${slug}`}>
           <p className="font-bold">{item.productName?.translated || "Item"}</p>
