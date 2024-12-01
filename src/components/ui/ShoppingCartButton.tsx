@@ -61,7 +61,11 @@ export default function ShoppingCartButton({
           <div className="flex grow flex-col space-y-2 overflow-auto pt-1">
             <ul className="space-y-5">
               {cartQueryData?.lineItems.map((item) => (
-                <ShoppingCartItem key={item._id} item={item} />
+                <ShoppingCartItem
+                  key={item._id}
+                  item={item}
+                  onProductLinkClicked={() => setSheetOpen(false)}
+                />
               ))}
             </ul>
             {/* isLoading cart */}
@@ -84,6 +88,7 @@ export default function ShoppingCartButton({
               </div>
             )}
           </div>
+          <hr />
           <div className="flex items-center justify-between gap-5">
             <div className="space-y-0.5">
               <p className="text-sm">Subtotal amount</p>
@@ -106,9 +111,13 @@ export default function ShoppingCartButton({
 
 interface ShoppingCartItemProps {
   item: currentCart.LineItem;
+  onProductLinkClicked: () => void;
 }
 
-function ShoppingCartItem({ item }: ShoppingCartItemProps) {
+function ShoppingCartItem({
+  item,
+  onProductLinkClicked,
+}: ShoppingCartItemProps) {
   const updateQuantityMutation = useUpdateCartItemQuantity();
   const removeItemMutatation = useRemoveCartItem();
   const productId = item._id;
@@ -124,7 +133,7 @@ function ShoppingCartItem({ item }: ShoppingCartItemProps) {
   return (
     <li className="flex items-center gap-3">
       <div className="relative size-fit flex-none">
-        <Link href={`/products/${slug}`}>
+        <Link href={`/products/${slug}`} onClick={onProductLinkClicked}>
           <WixImage
             mediaIdentifier={item.image}
             width={110}
@@ -141,7 +150,7 @@ function ShoppingCartItem({ item }: ShoppingCartItemProps) {
         </button>
       </div>
       <div className="space-y-1.5 text-sm">
-        <Link href={`/products/${slug}`}>
+        <Link href={`/products/${slug}`} onClick={onProductLinkClicked}>
           <p className="font-bold">{item.productName?.translated || "Item"}</p>
         </Link>
         {!!item.descriptionLines?.length && (
