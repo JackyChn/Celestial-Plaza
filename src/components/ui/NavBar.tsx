@@ -1,16 +1,22 @@
 import { getCart } from "@/app/wix-api/cart";
 import { getWixServerClient } from "@/lib/wix-client.server";
+import { getLoggedInMember } from "@/app/wix-api/member";
+import { getCollections } from "@/app/wix-api/collections";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import ShoppingCartButton from "./ShoppingCartButton";
+import UserButton from "./UserButton";
 
 export default async function NavBar() {
   const mainCart = await getCart(getWixServerClient());
-  const totalQuantity =
-    // refer the cart.json
-    mainCart?.lineItems.reduce((acc, item) => acc + (item.quantity || 0), 0) ||
-    0;
+  const wixClient = getWixServerClient();
+
+  const [cart, loggedInMember, collections] = await Promise.all([
+    getCart(wixClient),
+    getLoggedInMember(wixClient),
+    getCollections(wixClient),
+  ]);
   return (
     <header className="bg-background shadow-sm">
       <div className="mx-auto flex max-w-7xl justify-between p-5">
@@ -18,7 +24,13 @@ export default async function NavBar() {
           <Image src={"/logo.png"} alt="Logo" width={40} height={40} />
           <span className="text-xl font-bold">Celestial Plaza</span>
         </Link>
-        <ShoppingCartButton initialData={mainCart} />
+        <div className="flex flex-wrap">
+          <UserButton
+            loggedInMember={loggedInMember}
+            className="hidden lg:inline-flex"
+          />
+          <ShoppingCartButton initialData={mainCart} />
+        </div>
       </div>
     </header>
   );

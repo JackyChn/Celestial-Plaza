@@ -1,5 +1,4 @@
 import { env } from "@/env";
-import { useCreateBackInStockNotificationRequest } from "@/hooks/useBackInStockNotification";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { products } from "@wix/stores";
 import { useForm } from "react-hook-form";
@@ -24,6 +23,7 @@ import {
 } from "./form";
 import { Input } from "./input";
 import { requiredString } from "@/lib/validation";
+import { useCreateBackInStockNotificationRequest } from "@/hooks/useCreateBackInStockNotificationRequest";
 
 const formSchema = z.object({
   email: requiredString.email(),
