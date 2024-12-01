@@ -42,15 +42,20 @@ export default function UserButton({
 
   return (
     <DropdownMenu>
+      {/* the user icon to open the dropdown */}
       <DropdownMenuTrigger asChild>
         <Button size="icon" variant="ghost" className={className}>
           <UserIcon />
         </Button>
       </DropdownMenuTrigger>
+
+      {/* dropdown content */}
       <DropdownMenuContent className="min-w-44 max-w-64">
+        {/* if it is logged in */}
         {loggedInMember && (
           <>
             <DropdownMenuLabel>
+              {/* then show the login user firstname */}
               Logged in as{" "}
               {loggedInMember.contact?.firstName || loggedInMember.loginEmail}
             </DropdownMenuLabel>
@@ -64,11 +69,14 @@ export default function UserButton({
             <DropdownMenuSeparator />
           </>
         )}
+        {/* theme has a submenu, with system default, light/dark mode */}
         <DropdownMenuSub>
+          {/* theme label to open the submenu of theme, the trigger */}
           <DropdownMenuSubTrigger>
             <Monitor className="mr-2 size-4" />
             Theme
           </DropdownMenuSubTrigger>
+          {/* the protal is what within the submenu */}
           <DropdownMenuPortal>
             <DropdownMenuSubContent>
               <DropdownMenuItem onClick={() => setTheme("system")}>
