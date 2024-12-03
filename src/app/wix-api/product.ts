@@ -2,41 +2,71 @@ import { WixClient } from "@/lib/wix-client.base";
 import { cache } from "react";
 
 interface QueryProductsFilter {
+  q?: string;
   collectionIds?: string[] | string;
-  sort: ProductSort;
+  sort?: ProductsSort;
+  priceMin?: number;
+  priceMax?: number;
+  skip?: number;
+  limit?: number;
 }
 
 // R: all products logic
-export async function queryProudcts(
+export async function queryProducts(
   wixClient: WixClient,
-  { collectionIds, sort = "last_updated" }: QueryProductsFilter,
+  {
+    q,
+    collectionIds,
+    sort = "last_updated",
+    priceMin,
+    priceMax,
+    skip,
+    limit,
+  }: QueryProductsFilter,
 ) {
+  // query all products
   let query = wixClient.products.queryProducts();
-  // .hasSome("collectionIds", [collection._id])
-  // .descending("lastUpdated")
-  // .find();
+
+  if (q) {
+    query = query.startsWith("name", q);
+  }
 
   const collectionIdsArray = collectionIds
-    ? Array.isArray(collectionIds) // if is an array
-      ? collectionIds // yes, leave it as an array
-      : [collectionIds] // no, a string, then put as an array
-    : []; // no collectionsIds at all, then put as an empty array
+    ? Array.isArray(collectionIds)
+      ? collectionIds
+      : [collectionIds]
+    : [];
 
-  if (collectionIdsArray.length > 0)
-    query = query.hasSome("collectionIds", collectionIdsArray); // .hasSome("collectionIds", [collection._id])
+  if (collectionIdsArray.length > 0) {
+    query = query.hasSome("collectionIds", collectionIdsArray);
+  }
 
   // sort logic
   switch (sort) {
-    case "last_updated":
-      query = query.descending("lastUpdated");
-      break;
     case "price_asc":
       query = query.ascending("price");
       break;
     case "price_desc":
       query = query.descending("price");
       break;
+    case "last_updated":
+      query = query.descending("lastUpdated");
+      break;
   }
+
+  // sort by minPrice
+  if (priceMin) {
+    query = query.ge("priceData.price", priceMin);
+  }
+
+  // sort by maxPrice
+  if (priceMax) {
+    query = query.le("priceData.price", priceMax);
+  }
+
+  // age limit and skip query logic
+  if (limit) query = query.limit(limit);
+  if (skip) query = query.skip(skip);
 
   return query.find();
 }

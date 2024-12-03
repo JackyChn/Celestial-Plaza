@@ -8,7 +8,7 @@ import { TextRevealCard } from "@/components/ui/TextRevealCard";
 import { Suspense } from "react";
 import Product from "@/components/Product";
 import { Skeleton } from "@/components/ui/skeleton";
-import { queryProudcts } from "./wix-api/product";
+import { queryProducts } from "./wix-api/product";
 import { getWixServerClient } from "@/lib/wix-client.server";
 import { getCollectionBySlug } from "./wix-api/collections";
 
@@ -63,7 +63,7 @@ async function FeaturedProducts() {
   const collection = await getCollectionBySlug(wixClient, "featured-products");
   if (!collection?._id) return null;
 
-  const featuredProducts = await queryProudcts(wixClient, {
+  const featuredProducts = await queryProducts(wixClient, {
     collectionIds: collection._id,
     sort: "last_updated",
   });
