@@ -1,6 +1,6 @@
 "use client";
 
-import Badge from "@/components/ui/badge";
+import Badge from "@/components/ui/Badge";
 import React, { useState } from "react";
 import { products } from "@wix/stores";
 import ProductOptions from "./ProductOptions";

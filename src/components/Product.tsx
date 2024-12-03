@@ -3,7 +3,7 @@ import { products } from "@wix/stores";
 import Link from "next/link";
 import WixImage from "./WixImage";
 import DiscountBadge from "./ui/DiscountBadge";
-import Badge from "./ui/badge";
+import Badge from "./ui/Badge";
 
 interface ProductProps {
   product: products.Product;
