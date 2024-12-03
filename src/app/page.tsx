@@ -8,9 +8,9 @@ import { TextRevealCard } from "@/components/ui/TextRevealCard";
 import { Suspense } from "react";
 import Product from "@/components/Product";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getCollectionsBySlug } from "./wix-api/collections";
 import { queryProudcts } from "./wix-api/product";
 import { getWixServerClient } from "@/lib/wix-client.server";
+import { getCollectionBySlug } from "./wix-api/collections";
 
 export default function Home() {
   return (
@@ -60,7 +60,7 @@ export default function Home() {
 async function FeaturedProducts() {
   const wixClient = getWixServerClient();
 
-  const collection = await getCollectionsBySlug(wixClient, "featured-products");
+  const collection = await getCollectionBySlug(wixClient, "featured-products");
   if (!collection?._id) return null;
 
   const featuredProducts = await queryProudcts(wixClient, {

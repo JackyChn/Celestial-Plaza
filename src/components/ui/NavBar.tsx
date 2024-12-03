@@ -7,6 +7,7 @@ import Link from "next/link";
 import React from "react";
 import ShoppingCartButton from "./ShoppingCartButton";
 import UserButton from "./UserButton";
+import MainNavigation from "./MainNavigation";
 
 export default async function NavBar() {
   const mainCart = await getCart(getWixServerClient());
@@ -20,10 +21,13 @@ export default async function NavBar() {
   return (
     <header className="bg-background shadow-sm">
       <div className="mx-auto flex max-w-7xl justify-between p-5">
-        <Link href={"/"} className="flex items-center justify-center gap-4">
-          <Image src={"/logo.png"} alt="Logo" width={40} height={40} />
-          <span className="text-xl font-bold">Celestial Plaza</span>
-        </Link>
+        <div className="flex flex-wrap items-center gap-5">
+          <Link href={"/"} className="flex items-center justify-center gap-4">
+            <Image src={"/logo.png"} alt="Logo" width={40} height={40} />
+            <span className="text-xl font-bold">Celestial Plaza</span>
+          </Link>
+          <MainNavigation collections={collections} />
+        </div>
         <div className="flex flex-wrap">
           <UserButton
             loggedInMember={loggedInMember}
