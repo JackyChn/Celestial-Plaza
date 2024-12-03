@@ -31,7 +31,7 @@ export function useAddItemToCart() {
   const queryClient = useQueryClient();
   const { toast } = useToast();
 
-  const { mutate: addItem, status } = useMutation({
+  const { mutate: addItem, isPending } = useMutation({
     mutationFn: (values: AddToCartValues) =>
       addToCart(wixBrowserClient, values),
     onSuccess: (data) => {
@@ -48,7 +48,7 @@ export function useAddItemToCart() {
     },
   });
 
-  return { addItem, status };
+  return { addItem, isPending };
 }
 
 export function useUpdateCartItemQuantity() {

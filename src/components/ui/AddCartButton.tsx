@@ -21,7 +21,7 @@ export default function AddToCartButton({
   className,
   ...props
 }: AddToCartButtonProps) {
-  const { addItem, isAdding } = useAddItemToCart();
+  const { addItem, isPending } = useAddItemToCart();
 
   return (
     <LoadingButton
@@ -32,7 +32,7 @@ export default function AddToCartButton({
           quantity,
         })
       }
-      loading={isAdding}
+      loading={isPending}
       className={cn("flex gap-3", className)}
       {...props}
     >
