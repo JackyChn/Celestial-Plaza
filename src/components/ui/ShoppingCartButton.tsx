@@ -18,6 +18,7 @@ import {
 import Link from "next/link";
 import WixImage from "../WixImage";
 import { cn } from "@/lib/utils";
+import CheckoutButton from "./CheckoutButton";
 
 interface ShoppingCartButtonProps {
   initialData: currentCart.Cart | null;
@@ -100,9 +101,7 @@ export default function ShoppingCartButton({
               </p>
             </div>
           </div>
-          <Button size={"lg"} disabled={!totalQuantity || isFetching}>
-            Checkout
-          </Button>
+          <CheckoutButton size={"lg"} disabled={!totalQuantity || isFetching} />
         </SheetContent>
       </Sheet>
     </>

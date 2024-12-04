@@ -14,6 +14,7 @@ export async function getCheckoutUrlForCurrentCart(wixClient: WixClient) {
   const { redirectSession } = await wixClient.redirects.createRedirectSession({
     ecomCheckout: { checkoutId },
     callbacks: {
+      // redirect to the generated page url
       postFlowUrl: window.location.href,
       thankYouPageUrl: env.NEXT_PUBLIC_BASE_URL + "/checkout-success",
     },
@@ -22,7 +23,6 @@ export async function getCheckoutUrlForCurrentCart(wixClient: WixClient) {
   if (!redirectSession) {
     throw Error("Failed to create redirect session");
   }
-
   return redirectSession.fullUrl;
 }
 
@@ -31,7 +31,6 @@ export interface GetCheckoutUrlForProductValues {
   quantity: number;
   selectedOptions: Record<string, string>;
 }
-
 export async function getCheckoutUrlForProduct(
   wixClient: WixClient,
   { product, quantity, selectedOptions }: GetCheckoutUrlForProductValues,
