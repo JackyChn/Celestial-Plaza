@@ -1,4 +1,5 @@
 import { getWixServerClient } from "@/lib/wix-client.server";
+import SearchFilterLayout from "./SearchFilterLayout";
 import { getCollections } from "../wix-api/collections";
 
 export default async function Layout({
@@ -8,5 +9,9 @@ export default async function Layout({
 }) {
   const collections = await getCollections(getWixServerClient());
 
-  return <div>{children}</div>;
+  return (
+    <SearchFilterLayout collections={collections}>
+      {children}
+    </SearchFilterLayout>
+  );
 }

@@ -63,6 +63,7 @@ export default function SearchFilterLayout({
         className="h-fit space-y-5 lg:sticky lg:top-10 lg:w-64"
         data-pending={isPending ? "" : undefined}
       >
+        {/* Collections Filter */}
         <CollectionsFilter
           collections={collections}
           selectedCollectionIds={optimisticFilters.collection}
@@ -70,6 +71,8 @@ export default function SearchFilterLayout({
             updateFilters({ collection: collectionIds })
           }
         />
+
+        {/* Price Filter */}
         <PriceFilter
           minDefaultInput={optimisticFilters.price_min}
           maxDefaultInput={optimisticFilters.price_max}
@@ -81,6 +84,8 @@ export default function SearchFilterLayout({
           }
         />
       </aside>
+
+      {/* Sort Filter */}
       <div className="w-full max-w-7xl space-y-5">
         <div className="flex justify-center lg:justify-end">
           <SortFilter
