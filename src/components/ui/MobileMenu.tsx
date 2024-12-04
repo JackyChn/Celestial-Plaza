@@ -15,6 +15,7 @@ import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import SearchField from "./SearchField";
 import UserButton from "./UserButton";
+import { twConfig } from "@/lib/utils";
 
 interface MobileMenuProps {
   collections: collections.Collection[];
