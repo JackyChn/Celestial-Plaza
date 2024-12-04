@@ -27,7 +27,10 @@ export default async function NavBar() {
             <Image src={"/logo.png"} alt="Logo" width={40} height={40} />
             <span className="text-xl font-bold">Celestial Plaza</span>
           </Link>
-          <MainNavigation collections={collections} />
+          <MainNavigation
+            collections={collections}
+            className="hidden lg:flex"
+          />
         </div>
         <SearchField className="max-w-96" />
         <div className="flex flex-wrap">
